@@ -1,0 +1,42 @@
+name: challenge
+
+on:
+    push:
+        branches:
+            - main
+jobs:
+    job1:
+        name: Ubuntu Date
+        runs-on: ubuntu-latest
+        steps:
+            - name: Step one
+              uses: actions/checkout@v3
+            - name: Step two
+              run: "date + '%d-%m-%y'"
+    job2:
+        name: Windows Date
+        runs-on: windows-latest
+        steps:
+            - name: Step one
+              uses: actions/checkout@v3
+            - name: Step two
+              run: "Get-Date -Format 'MM/dd/yyyy'"
+    job3:
+        name: Mac Date
+        runs-on: macos-latest
+        steps:
+            - name: Step one
+              uses: actions/checkout@v3
+            - name: Step two
+              run: "date + '%d-%m-%y'"
+    job4:
+        needs: [job1, job2, job3]
+        name: Ubuntu Again
+        runs-on: ubuntu-latest
+        steps:
+            - name: Step one
+              uses: actions/checkout@v3
+            - name: Step two
+              run: |
+                date + "%d-%m-%y"
+                echo "I like Linux the best!"
