@@ -30,6 +30,6 @@ jobs:
             - name: Copy tomcat-users.xml into Tomat configuration directory
               run: cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
             - name: Compile Tomcat
-                run: |
+              run: |
                     cd ./tomcat
                     ant
