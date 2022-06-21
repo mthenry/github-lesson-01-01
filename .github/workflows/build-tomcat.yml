@@ -1,0 +1,35 @@
+name: Build Tomcat
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out t
+              uses: actions/checkout@v3
+            - name: List project files and java version
+              run: |
+                ls -ltr
+                java -version
+            - name: Check out Apache Tomcat
+              uses: actions/checkout@v3
+              with:
+                repository: apache/tomcat   # Repository name with owner
+                ref: master                 # The branch, tag, or SHA to checkout
+                path: ./tomcat              # Relative path under $GITHUB_WORKSPACE
+            - name: Setup Java JDK
+              uses: actions/setup-java@v3.4.0
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+            - name: List project files and java version
+              run: |
+                ls -ltr
+                java -version
+            - name: Copy tomcat-users.xml into Tomat configuration directory
+              run: cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
+            - name: Compile Tomcat
+                run: |
+                    cd ./tomcat
+                    ant
