@@ -12,7 +12,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: List project files and java version
-      options: --user root
       run: |
           ls -ltr
           java -version
