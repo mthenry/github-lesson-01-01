@@ -80,4 +80,4 @@ jobs:
         pwd
         
     - name: Test ${{ env.FILE_NAME }}
-      run: ${{ env.FILE_NAME }}.exe
+      run: .\${{ env.FILE_NAME }}.exe
