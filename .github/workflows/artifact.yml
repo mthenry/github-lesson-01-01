@@ -52,7 +52,9 @@ jobs:
         name: linux
         
     - name: 'Echo download path'
-      run: echo ${{steps.download.outputs.download-path}}
+      run: |
+        ls
+        pwd
   
     - name: Test ${{ env.FILE_NAME }}
       run: source ./test.sh
