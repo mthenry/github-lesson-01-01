@@ -50,6 +50,9 @@ jobs:
       uses: actions/download-artifact@v3.0.0
       with:
         name: linux
+        
+    - name: 'Echo download path'
+      run: echo ${{steps.download.outputs.download-path}}
   
     - name: Test ${{ env.FILE_NAME }}
       run: source ./test.sh
