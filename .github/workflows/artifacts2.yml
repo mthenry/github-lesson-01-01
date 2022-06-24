@@ -31,13 +31,10 @@ jobs:
               uses: actions/download-artifact@v3.0.0
               with:
                 name: python-script
-            - run: |
-                ls
-                pwd
-            #- name: Setup Python
-            #  uses: actions/setup-python@v4
-            #  with:
-            #    python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-            #    architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-            #- name: Run Python script
-            #  run: python python-script
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+                architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+            - name: Run Python script
+              run: python ${{env.FILE_NAME}}
