@@ -6,10 +6,10 @@ env:
     FILE_NAME: hello-python.py
 
 jobs:
-    build:
-        - name: Push Artifacts
-          runs-on: ubuntu-latest
-          steps:
+    job1:
+        name: Push Artifacts
+        runs-on: ubuntu-latest
+        steps:
             - name: Checkout repository
               uses: actions/checkout@v3
             - name: Upload artifact for Linux
@@ -23,10 +23,10 @@ jobs:
                 name: python-script
                 path: ./${{env.FILE_NAME}}
     test-linux:
-        - name: Test Linux
-          runs-on: ubuntu-latest
-          needs: [job1]
-          steps:
+        name: Test Linux
+        runs-on: ubuntu-latest
+        needs: [job1]
+        steps:
             - name: Download artifact
               uses: actions/download-artifact@v3.0.0
               with:
